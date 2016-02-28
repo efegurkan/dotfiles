@@ -1,4 +1,4 @@
-"Vundle stuff
+"Vundle things
 set nocompatible "Use Improved
 filetype off     "Required for Vundle
 
@@ -18,7 +18,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'tomasr/molokai'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'PeterRincker/vim-argumentative'
@@ -26,13 +26,21 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'helino/vim-json'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'pangloss/vim-javascript'
+Plugin 'rking/ag.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'gre/play2vim'
+Plugin 'othree/html5.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'burnettk/vim-angular'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'mxw/vim-jsx'
 Plugin 'vim-scripts/a.vim'
 
 call vundle#end()
+
 "filetype stuff
 filetype on
 filetype plugin on
@@ -94,7 +102,6 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 " -[ FileTypes ]-
-"  Add your stuff below
 " mail
 autocmd FileType mail,human set formatoptions+=t textwidth=80
 
@@ -104,14 +111,12 @@ autocmd FileType markdown set nocindent "Wraping fix for braces
 autocmd FileType markdown set expandtab "Use spaces for tabs, a requirement by markdown
 autocmd FileType markdown set shiftwidth=4
 
-" go
 autocmd BufRead,BufNewFile *.go set filetype=go
 autocmd BufWritePre *.go Fmt
 
-" Coffee
 autocmd BufRead,BufNewFile *.coffee set expandtab shiftwidth=2 softtabstop=2
 
-" Omnicompletion for js and coffee
+" Omni completion for js and coffee
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType coffee set omnifunc=javascriptcomplete#CompleteJS
 
@@ -136,14 +141,14 @@ let os=substitute(system('uname'), '\n', '', '')
 
 syntax enable                   " syntax formatting for languages
 set background=dark
-colorscheme molokai
-let g:molokai_original = 1
+let g:solarized_termcolors=256
+colorscheme solarized
 
 "indent guide
-"Eslint will be more useful than this
-"use leader ig to show to toggle this
+" Eslint is more useful in general
+" leader ig to toggle
 let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
+let g:indent_guides_guide_size = 2
 hi IndentGuidesOdd  ctermbg=darkgrey
 hi IndentGuidesEven ctermbg=lightgrey
 
@@ -173,7 +178,7 @@ let g:mapleader = ","
 map <C-n> :cn<CR>
 map <C-m> :cp<CR>
 
-" Remove search highlight
+" Remove search hilight
 nnoremap <leader><space> :nohlsearch<CR>
 
 
@@ -184,7 +189,6 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Fast saving
-" disable leader q if you believe it can be harmful
 nmap <leader>w :w!<cr>
 nmap <leader>q :q!<cr>
 
@@ -204,7 +208,7 @@ map gr gT
 " ----------------------------------------- "
 
 " ack
-" using ag to search with ack.vim
+"let g:ackprg="ack --column"
 let g:ackprg="ag --nogroup --nocolor --column"
 noremap <Leader>a :Ack! <cword><cr>
 noremap <Leader>s :AckFromSearch <cr>
@@ -241,7 +245,7 @@ nmap <leader>n :NERDTreeToggle <CR>
 map <leader>r :NERDTreeFind<cr>
 let NERDTreeChDirMode=1
 
-" tagbar probably dont need that if you dont use ctags
+" tagbar
 nmap <leader>b :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
@@ -249,7 +253,6 @@ let g:tagbar_autofocus = 1
 let g:Powerline_symbols = 'fancy'
 
 " syntactic
-" Read documentation for details
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
@@ -261,7 +264,6 @@ let g:ag_working_path_mode="r"
 
 
 "relative number
-"it is useful when you get used to it.
 function! NumberToggle()
   if(&relativenumber == 1)
     set norelativenumber
@@ -271,9 +273,17 @@ function! NumberToggle()
 endfunc
 
 "you can just remap the key for toggling.
-nnoremap <C-i> :call NumberToggle()<cr>
+nnoremap <C-a> :call NumberToggle()<cr>
+
+" JS Libs Syntax
+let g:used_javascript_libs = 'lodash,angularjs,angularui,angularuirouter,react,chai'
+
+" Vim-jsx
+" If you use jsx in .js files set this 0
+let g:jsx_ext_required = 0
 
 "show function name, forks fine for c/c++ taken from LibreOffice wiki
+" works fine for getting which react component you are in
 function! ShowFuncName()
   let lnum = line(".")
   let col = col(".")
