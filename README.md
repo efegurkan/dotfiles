@@ -62,39 +62,39 @@ I don't use. These are the plugins and mappings that I use.
 
 
 ### Plugins
-* Vundle: to handle plugins
-* ctrlp: \<C-p\> to open most recent files, \<C-f\> to change mode to search on files.
-* gundo: see local change history in a tree!!! Never lost a thing again.
-* nerdcommenter: quickly comment out lines.
-* vim-easymotion: jump around lines and words much quicker.(If you use vimium or
+* *Vundle*: to handle plugins
+* *ctrlp*: \<C-p\> to open most recent files, \<C-f\> to change mode to search on files.
+* *gundo*: see local change history in a tree!!! Never lost a thing again.
+* *nerdcommenter*: quickly comment out lines.
+* *vim-easymotion*: jump around lines and words much quicker.(If you use vimium or
   vimfx like plugin on your web browser it is similar to their follow link feature)
-* tagbar: ctags plugin.
-* vim-fugitive: I only use it for :Gblame, basically can do git stuff on vim.
-* nerd-tree: your file manager. press ? while nerdtree on focused. Tons of
+* *tagbar*: ctags plugin.
+* *vim-fugitive*: I only use it for :Gblame, basically can do git stuff on vim.
+* *nerd-tree*: your file manager. press ? while nerdtree on focused. Tons of
   great features.
-* powerline: fancy status bar.
-* vim-colors-solarized: solarized theme for vim. Do not forget to change your
+* *powerline*: fancy status bar.
+* *vim-colors-solarized*: solarized theme for vim. Do not forget to change your
   contrast settings especially when using dark version.
-* syntastic: syntax checker, compatible with a lot of stuff. RTM for more.
-* vim-scala: I use it for syntax highlighting mostly.
-* vim-argumantative: argument mover .... I mean yeah.... :D
-* delimitMate: auto close braces, brackets etc.
-* vim-json: json syntax hightlighting
-* vim-easy-align: overpowered indentation helper, makes it feels like using a
+* *syntastic*: syntax checker, compatible with a lot of stuff. RTM for more.
+* *vim-scala*: I use it for syntax highlighting mostly.
+* *vim-argumantative*: argument mover .... I mean yeah.... :D
+* *delimitMate*: auto close braces, brackets etc.
+* *vim-json*: json syntax hightlighting
+* *vim-easy-align*: overpowered indentation helper, makes it feels like using a
   sledgehammer for hanging a picture to the wall.
-* vim-javascript: javascript syntax and indent plugin
-* ag.vim: the silver searcher
-* YouCompleteMe: omnicompletion engine, my current setup slows downs buffer
+* *vim-javascript*: javascript syntax and indent plugin
+* *ag.vim*: the silver searcher
+* *YouCompleteMe*: omnicompletion engine, my current setup slows downs buffer
   loads a lot be. Consult its own docs for more info.
-* vim-indent-guides: it is sometimes useful but mostly makes it looks like you
+* *vim-indent-guides*: it is sometimes useful but mostly makes it looks like you
   code on your fathers pijamas. Off by default. Toggled by command
-* vim-javascript-syntax: More enhanced JS syntax highlighting
-* vim-coffee-script: coffee syntax and highlighting
-* play2vim: play framework support for vim highlighting routes, twirl files etc.
-* html5.vim: html5 support
-* vim-gitgutter: see whats changed on git near the line numbers. Syntastic will
+* *vim-javascript-syntax*: More enhanced JS syntax highlighting
+* *vim-coffee-script*: coffee syntax and highlighting
+* *play2vim*: play framework support for vim highlighting routes, twirl files etc.
+* *html5.vim*: html5 support
+* *vim-gitgutter*: see whats changed on git near the line numbers. Syntastic will
   override it if there is an syntax error/warning.
-* vim-angular: support for angular only for highlighting
-* javascript-libraries-syntax: name tells what it does.
-* vim-jsx: jsx syntax support
-* a.vim: quick switch for cpp files.
+* *vim-angular*: support for angular only for highlighting
+* *javascript-libraries-syntax*: name tells what it does.
+* *vim-jsx*: jsx syntax support
+* *a.vim*: quick switch for cpp files.
