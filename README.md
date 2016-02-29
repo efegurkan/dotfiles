@@ -55,7 +55,8 @@ I don't use. These are the plugins and mappings that I use.
 * \<C-h\>
 * \<C-l\>
 
-* gr to go on previous line
+* gr to go on previous tab
+* gt to go on next tab
 
 * \<C-a\> toggle relative number mode func
 
