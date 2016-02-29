@@ -14,33 +14,33 @@ I don't use. These are the plugins and mappings that I use.
 
 ### Mappings
 
-* <leader> is ','
+* \<leader\> is ','
 
 * ,w write override
 * ,q quit override
-* ,<Space> disable search highlighting. Enabled with next search
+* ,\<Space\> disable search highlighting. Enabled with next search
 * jk exit to normal mode
 
 * ,hr revert changes - git gutter
 * ,hs stage changes - git gutter
 * ,hp see changes - git gutter
 
-* <C-p> open most recent files - Ctrl-p
-* <C-f> open files buffer while Ctrl-p window is open - Ctrl-p
+* \<C-p\> open most recent files - Ctrl-p
+* \<C-f\> open files buffer while Ctrl-p window is open - Ctrl-p
 
 * ,g toggle - gundo tree
 
 * ,cc comment out (current line / selected lines) - nerd-commenter
 * ,cu uncomment line (current line / selected lines) - nerd-commenter
-* ,c<Space> toggle comments - nerd-commenter
+* ,c\<Space\> toggle comments - nerd-commenter
 
 * ,,w toggle easymotion
 
 * ,n toggle nerdtree
 * ,r find on nerdtree
 
-* >, move argument to right - argumentative
-* <, move argument to left - argumentative
+* \>, move argument to right - argumentative
+* \<, move argument to left - argumentative
 
 * = indent selected rights
 * =G indent lines from selected to the end of the file
@@ -50,19 +50,19 @@ I don't use. These are the plugins and mappings that I use.
 
 * ,ig toggle pijama mode - indent lines
 
-* <C-j> move focus to split window respectively to the window with these
-* <C-k>
-* <C-h>
-* <C-l>
+* \<C-j\> move focus to split window respectively to the window with these
+* \<C-k\>
+* \<C-h\>
+* \<C-l\>
 
 * gr to go on previous line
 
-* <C-a> toggle relative number mode func
+* \<C-a\> toggle relative number mode func
 
 
 ### Plugins
 * Vundle: to handle plugins
-* ctrlp: <C-p> to open most recent files, <C-f> to change mode to search on files.
+* ctrlp: \<C-p\> to open most recent files, \<C-f\> to change mode to search on files.
 * gundo: see local change history in a tree!!! Never lost a thing again.
 * nerdcommenter: quickly comment out lines.
 * vim-easymotion: jump around lines and words much quicker.(If you use vimium or
