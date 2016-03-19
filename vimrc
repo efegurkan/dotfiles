@@ -202,6 +202,11 @@ nnoremap Y y$
 " gr to previous tab
 map gr gT
 
+" F5 to gotodefiniton
+nnoremap <F5> :YcmCompleter GoToDefinition <cword><cr>
+
+" F6 to refactor varialbe
+nnoremap <F6> :YcmCompleter RefactorRename <Space>
 
 " ----------------------------------------- "
 " Plugin configs
