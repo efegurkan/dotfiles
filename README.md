@@ -60,6 +60,9 @@ I don't use. These are the plugins and mappings that I use.
 
 * \<C-a\> toggle relative number mode func
 
+* \<F5\> to go to definition of the word under the cursor
+* \<F6\> to context aware rename the variable under the cursor
+
 
 ### Plugins
 * *Vundle*: to handle plugins
