@@ -190,7 +190,7 @@ map <C-l> <C-W>l
 
 " Fast saving
 nmap <leader>w :w!<cr>
-nmap <leader>q :q!<cr>
+nmap <leader>q :q<cr>
 
 " Just go out in insert mode
 imap jk <ESC>l
@@ -240,6 +240,8 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
+" YCM
+let g:ycm_collect_identifiers_from_tags_files = 1
 
 "gundo
 nnoremap <leader>g :GundoToggle<CR>

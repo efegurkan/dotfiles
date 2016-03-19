@@ -17,7 +17,7 @@ I don't use. These are the plugins and mappings that I use.
 * \<leader\> is ','
 
 * ,w write override
-* ,q quit override
+* ,q quit
 * ,\<Space\> disable search highlighting. Enabled with next search
 * jk exit to normal mode
 
