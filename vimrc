@@ -18,6 +18,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'tomasr/molokai'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
 Plugin 'derekwyatt/vim-scala'
@@ -38,6 +39,10 @@ Plugin 'burnettk/vim-angular'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'vim-scripts/a.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'isRuslan/vim-es6'
+Plugin 'takac/vim-spotifysearch'
 
 call vundle#end()
 
@@ -140,9 +145,10 @@ let os=substitute(system('uname'), '\n', '', '')
 " ------------------------------------------"
 
 syntax enable                   " syntax formatting for languages
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+"set background=dark
+"let g:solarized_termcolors=256
+"colorscheme solarized
+colorscheme molokai
 
 "indent guide
 " Eslint is more useful in general
@@ -178,7 +184,7 @@ let g:mapleader = ","
 map <C-n> :cn<CR>
 map <C-m> :cp<CR>
 
-" Remove search hilight
+" Remove search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
 
@@ -266,9 +272,28 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
 
+"Do not show warnings ,0 show all ,9
+"with my awful function naming
+nnoremap <leader>0 :call ErrorOnly()<cr>
+nnoremap <leader>9 :call AllErrors()<cr>
+function! ErrorOnly()
+  let g:syntastic_quiet_messages = {
+        \ "!level":  "errors",
+        \ "type":    "style" }
+endfunc
+
+function! AllErrors()
+  let g:syntastic_quiet_messages = {}
+endfunc
+
 " ag vim search thing, start from current dir
 let g:ag_working_path_mode="r"
 
+" ultisnip
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-j>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "relative number
 function! NumberToggle()

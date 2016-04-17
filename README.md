@@ -63,6 +63,8 @@ I don't use. These are the plugins and mappings that I use.
 * \<F5\> to go to definition of the word under the cursor
 * \<F6\> to context aware rename the variable under the cursor
 
+* ,0 to show only errors on syntastic
+* ,9 show all errors and warnings on syntastic
 
 ### Plugins
 * *Vundle*: to handle plugins
