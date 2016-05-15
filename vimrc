@@ -43,6 +43,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'isRuslan/vim-es6'
 Plugin 'takac/vim-spotifysearch'
+Plugin 'endel/vim-github-colorscheme'
 
 call vundle#end()
 
@@ -148,7 +149,8 @@ syntax enable                   " syntax formatting for languages
 "set background=dark
 "let g:solarized_termcolors=256
 "colorscheme solarized
-colorscheme molokai
+"colorscheme molokai
+colorscheme github
 
 "indent guide
 " Eslint is more useful in general
