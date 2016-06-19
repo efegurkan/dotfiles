@@ -21,7 +21,7 @@ I don't use. These are the plugins and mappings that I use.
 * ,\<Space\> disable search highlighting. Enabled with next search
 * jk exit to normal mode
 
-* ,hr revert changes - git gutter
+* ,hu revert changes - git gutter
 * ,hs stage changes - git gutter
 * ,hp see changes - git gutter
 
@@ -57,8 +57,6 @@ I don't use. These are the plugins and mappings that I use.
 
 * gr to go on previous tab
 * gt to go on next tab
-
-* \<C-a\> toggle relative number mode func
 
 * \<F5\> to go to definition of the word under the cursor
 * \<F6\> to context aware rename the variable under the cursor
@@ -102,4 +100,3 @@ I don't use. These are the plugins and mappings that I use.
 * *vim-angular*: support for angular only for highlighting
 * *javascript-libraries-syntax*: name tells what it does.
 * *vim-jsx*: jsx syntax support
-* *a.vim*: quick switch for cpp files.

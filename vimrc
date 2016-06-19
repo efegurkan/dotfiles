@@ -19,8 +19,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'tomasr/molokai'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/syntastic'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'scrooloose/syntastic'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'PeterRincker/vim-argumentative'
 Plugin 'Raimondi/delimitMate'
@@ -38,12 +38,12 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'burnettk/vim-angular'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'mxw/vim-jsx'
-Plugin 'vim-scripts/a.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'isRuslan/vim-es6'
+Plugin 'jonathanfilip/vim-lucius'
 Plugin 'takac/vim-spotifysearch'
-Plugin 'endel/vim-github-colorscheme'
+Plugin 'GertjanReynaert/cobalt2-vim-theme'
 
 call vundle#end()
 
@@ -98,7 +98,7 @@ set noswapfile
 
 set fileformats=unix,dos,mac
 
-"Enable unde even if the file is closed
+"Enable undo even if the file is closed
 set undofile
 set undodir=/tmp
 set nobackup
@@ -150,7 +150,9 @@ syntax enable                   " syntax formatting for languages
 "let g:solarized_termcolors=256
 "colorscheme solarized
 "colorscheme molokai
-colorscheme github
+"colorscheme github
+colorscheme cobalt2
+
 
 "indent guide
 " Eslint is more useful in general
@@ -183,8 +185,8 @@ let g:mapleader = ","
 ":cn      next error
 ":cp      previous error
 ":clist   list all errors
-map <C-n> :cn<CR>
-map <C-m> :cp<CR>
+map <C-n> :lnext<CR>zz
+map <C-m> :lprev<CR>zz
 
 " Remove search highlight
 nnoremap <leader><space> :nohlsearch<CR>
@@ -216,6 +218,10 @@ nnoremap <F5> :YcmCompleter GoToDefinition <cword><cr>
 " F6 to refactor varialbe
 nnoremap <F6> :YcmCompleter RefactorRename <Space>
 
+" keep blocks selected when indenting
+vnoremap < <gv
+vnoremap > >gv
+
 " ----------------------------------------- "
 " Plugin configs
 " ----------------------------------------- "
@@ -230,12 +236,12 @@ noremap <Leader>s :AckFromSearch <cr>
 " Read documentation, some of these settings overrides others
 let g:ctrlp_cmd = 'CtrlPMRU'			" Open it in most recenlty used mode (the most important option everyone want!)
 let g:ctrlp_working_path_mode = 'ra'	" search for nearest ancestor like .git, .hg, and the directory of the current file
-let g:ctrlp_match_window_bottom = 0		" show the match window at the top of the screen
+let g:ctrlp_match_window_bottom = 1		" show the match window at the bottom of the screen
 let g:ctrlp_max_height = 10				" maxiumum height of match window
 let g:ctrlp_switch_buffer = 'Et'		" jump to a file if its open already
 let g:ctrlp_use_caching = 1				" enable caching
-let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp' "chache dir
-let g:ctrlp_clear_cache_on_exit = 0     "donr clear cache everytime we exit vim
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp' "ccache dir
+let g:ctrlp_clear_cache_on_exit = 1     "clear cache everytime we exit vim
 let g:ctrlp_show_hidden = 1				" show me dotfiles
 let g:ctrlp_mruf_max = 250				" number of recenytly opened files
 let g:ctrlp_prompt_mappings = {
@@ -250,6 +256,9 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 
 " YCM
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_filetype_specific_completion_to_disable = {
+      \ 'gitcommit': 1,
+      \}
 
 "gundo
 nnoremap <leader>g :GundoToggle<CR>
@@ -273,6 +282,21 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_mode_map = { "mode": "active",
+      \ "passive_filetypes": ["scala"] }
+
+
+nnoremap <leader>0 :call ErrorOnly()<cr>
+nnoremap <leader>9 :call AllErrors()<cr>
+function! ErrorOnly()
+  let g:syntastic_quiet_messages = {
+        \ "!level":  "errors",
+        \ "type":    "style" }
+endfunc
+
+function! AllErrors()
+  let g:syntastic_quiet_messages = {}
+endfunc
 
 "Do not show warnings ,0 show all ,9
 "with my awful function naming
@@ -306,9 +330,6 @@ function! NumberToggle()
   endif
 endfunc
 
-"you can just remap the key for toggling.
-nnoremap <C-a> :call NumberToggle()<cr>
-
 " JS Libs Syntax
 let g:used_javascript_libs = 'lodash,angularjs,angularui,angularuirouter,react,chai'
 
@@ -326,7 +347,7 @@ function! ShowFuncName()
   echohl None
   call search("\\%" . lnum . "l" . "\\%" . col . "c")
 endfunction
-map f :call ShowFuncName() <CR>
+"map f :call ShowFuncName() <CR>
 
 " Remove all trailing whitespace when saving
 " See http://vim.wikia.com/wiki/Remove_unwanted_spaces
