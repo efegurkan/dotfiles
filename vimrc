@@ -7,31 +7,27 @@ call vundle#begin()
 
 "Vundle manages itself
 "Required for Vundle
-Plugin 'gmarik/vundle'
-
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'Lokaltog/vim-easymotion'
+Plugin 'easymotion/vim-easymotion'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tomasr/molokai'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/syntastic'
-Plugin 'derekwyatt/vim-scala'
 Plugin 'PeterRincker/vim-argumentative'
 Plugin 'Raimondi/delimitMate'
 Plugin 'helino/vim-json'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'pangloss/vim-javascript'
-Plugin 'rking/ag.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'gre/play2vim'
 Plugin 'othree/html5.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'burnettk/vim-angular'
@@ -40,9 +36,8 @@ Plugin 'mxw/vim-jsx'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'isRuslan/vim-es6'
-Plugin 'jonathanfilip/vim-lucius'
-Plugin 'takac/vim-spotifysearch'
 Plugin 'GertjanReynaert/cobalt2-vim-theme'
+Plugin 'Valloric/MatchTagAlways'
 
 call vundle#end()
 
@@ -239,18 +234,29 @@ let g:ctrlp_max_height = 10				" maxiumum height of match window
 let g:ctrlp_switch_buffer = 'Et'		" jump to a file if its open already
 let g:ctrlp_use_caching = 1				" enable caching
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp' "cache dir
-let g:ctrlp_clear_cache_on_exit = 1     "clear cache everytime we exit vim
+let g:ctrlp_clear_cache_on_exit = 0     "clear cache everytime we exit vim ?
 let g:ctrlp_show_hidden = 1				" show me dotfiles
 let g:ctrlp_mruf_max = 250				" number of recently opened files
-let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("e")': [],
-  \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
-  \ }
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\(node_modules|target)$',
-  \ 'file': '\v\.(exe|so|dll)$'
+  \ 'dir':  '\v[\/]\(.git|node\_modules|target)$',
+  \ 'file': '\v\.(exe|so|dll|jpg|png|zip|7z|gz|tgz|bz|jar|bmp)$'
   \ }
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" If it sees a .git file ignores gitignore
+" using ag as fallback put files on the .agignore doesn't include hidden
+" in case you use vim on home folder
+" https://superuser.com/questions/649714/can-i-get-the-vim-ctrlp-plugin-to-ignore-a-specific-folder-in-one-project
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others'],
+    \},
+  \ 'fallback': 'ag %s -l --nocolor -g ""'
+  \}
+
+" NerdCommenter
+let g:NERDSpaceDelims = 1 " Space after comments
+let g:NERDDefaultAlign = 'left' " Put comment delimiters to left instead
+let g:NERDTrimTrailingWhitespace = 1
 
 " YCM
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -261,18 +267,22 @@ let g:ycm_filetype_specific_completion_to_disable = {
 "gundo
 nnoremap <leader>g :GundoToggle<CR>
 
-" vim-nerdtree
+" NerdTree
 nmap <leader>n :NERDTreeToggle <CR>
 " scroll to current file on nerdtree
 map <leader>r :NERDTreeFind<cr>
 let NERDTreeChDirMode=1
+autocmd StdinReadPre * let s:std_in=1 " Auto open nerdtree if no file specified
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " tagbar
 nmap <leader>b :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 " powerline
-let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts=1
+let g:airline_theme='dark'
+let g:Powerline_symbols='unicode'
 
 " syntactic
 let g:syntastic_always_populate_loc_list = 1
