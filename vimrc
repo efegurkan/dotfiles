@@ -17,10 +17,9 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'tomasr/molokai'
-"Plugin 'altercation/vim-colors-solarized'
-"Plugin 'scrooloose/syntastic'
+Plugin 'vim-airline/vim-airline'
+Plugin 'scrooloose/syntastic'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'PeterRincker/vim-argumentative'
 Plugin 'Raimondi/delimitMate'
@@ -53,7 +52,6 @@ filetype plugin on
 filetype plugin indent on "Required for Vundle
 
 set encoding=utf-8
-set term=xterm-256color
 set t_Co=256
 set cindent
 set autoindent
@@ -107,6 +105,8 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+set synmaxcol=600
+
 " -[ FileTypes ]-
 " mail
 autocmd FileType mail,human set formatoptions+=t textwidth=80
@@ -146,11 +146,6 @@ let os=substitute(system('uname'), '\n', '', '')
 " ------------------------------------------"
 
 syntax enable                   " syntax formatting for languages
-"set background=dark
-"let g:solarized_termcolors=256
-"colorscheme solarized
-"colorscheme molokai
-"colorscheme github
 colorscheme cobalt2
 
 
@@ -212,6 +207,9 @@ nnoremap Y y$
 " gr to previous tab
 map gr gT
 
+" F2 to sytax check
+nnoremap <F2> :SyntasticCheck<cr>
+
 " F5 to gotodefiniton
 nnoremap <F5> :YcmCompleter GoToDefinition <cword><cr>
 
@@ -228,7 +226,7 @@ vnoremap > >gv
 
 " ack
 "let g:ackprg="ack --column"
-let g:ackprg="ag --nogroup --nocolor --column"
+let g:ackprg="ag --path-to-agignore /path/to/agignore/.agignore --nogroup --nocolor --column"
 noremap <Leader>a :Ack! <cword><cr>
 noremap <Leader>s :AckFromSearch <cr>
 
@@ -240,10 +238,10 @@ let g:ctrlp_match_window_bottom = 1		" show the match window at the bottom of th
 let g:ctrlp_max_height = 10				" maxiumum height of match window
 let g:ctrlp_switch_buffer = 'Et'		" jump to a file if its open already
 let g:ctrlp_use_caching = 1				" enable caching
-let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp' "ccache dir
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp' "cache dir
 let g:ctrlp_clear_cache_on_exit = 1     "clear cache everytime we exit vim
 let g:ctrlp_show_hidden = 1				" show me dotfiles
-let g:ctrlp_mruf_max = 250				" number of recenytly opened files
+let g:ctrlp_mruf_max = 250				" number of recently opened files
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': [],
   \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
@@ -283,7 +281,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_mode_map = { "mode": "active",
-      \ "passive_filetypes": ["scala"] }
+      \ "passive_filetypes": ["scala", "jsx"] }
 
 
 nnoremap <leader>0 :call ErrorOnly()<cr>
